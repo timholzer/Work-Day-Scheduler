@@ -22,20 +22,32 @@ $( document ).ready(function() {
 $("#currentDay").text(moment().format('LL'));
 
 
-
 //check if anything is in local storage
+if(!localStorage.getItem('scheduledEvents')) {
+    updateCalendar(scheduledEvents);
+  } else {
+updateCalendar(JSON.parse(localStorage.getItem('scheduledEvents')))
+  }
+function updateCalendar(scheduledEvents){
+    $(".calendar-row").each(function() {
+        let theHour = $(this).children("div");
+        $(this).children("textarea").text(scheduledEvents[theHour.text()]);
+    })
+}
 
 
 
-
-
-
-
-//cycle through every hour?
 
 
 
 //check hour and change every hour's color
+
+
+
+
+
+
+
 
 
 
@@ -59,19 +71,6 @@ $("button").click(function() {
   }
 
  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
