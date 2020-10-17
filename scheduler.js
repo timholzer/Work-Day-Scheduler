@@ -20,7 +20,6 @@ $( document ).ready(function() {
     //matching the text with today's date
 $("#currentDay").text(moment().format('LL'));
 
-
 //check if anything is in local storage
 if(!localStorage.getItem('scheduledEvents')) {
     updateCalendar(scheduledEvents);
@@ -34,7 +33,6 @@ function updateCalendar(scheduledEvents){
         $(this).children("textarea").text(scheduledEvents[theHour.text()]);
     })
 }
-
 
 //check hour and change every hour's color
 var counter = 1;
@@ -51,10 +49,7 @@ for(const property in scheduledEvents) {
   } else {
     $(textEntry).addClass("present");
   }
-
   counter ++;
-
-
 }
 
 //changing the hour to a number to compare with moment.js
@@ -91,7 +86,7 @@ $("button").click(function() {
         localStorage.setItem('scheduledEvents', JSON.stringify(scheduledEvents));
     }
     // gets original local storage and adds the saved hour to it
-    let workHours = JSON.parse(localStorage.getItem('scheduledEvents'));
+    var workHours = JSON.parse(localStorage.getItem('scheduledEvents'));
     workHours[hourString] = scheduleNotes
     localStorage.setItem('scheduledEvents', JSON.stringify(workHours));
   }
